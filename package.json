@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -15,6 +12,17 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "html-webpack-plugin": "5.5.3",
+    "webpack": "5.89.0",
+    "webpack-cli": "5.1.4"
+  },
+  "scripts": {
+    "dev": "yarn view:dev && server:run",
+    "server:run": "yarn server:dev && node dist/server.js",
+    "server:dev": "webpack --config webpack.config.js --env side=server",
+    "server:watch": "webpack --watch --config webpack.config.js --env side='server'",
+    "view:dev": "webpack --config webpack.config.js --env side=view",
+    "view:watch": "webpack --watch --config webpack.config.js --env side=view"
   }
 }
